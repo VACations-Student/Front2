@@ -1,0 +1,22 @@
+<p id="texto">get-lugares work</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Item ID</th>
+      <th>Nombre</th>
+      <th>Latitud</th>
+      <th>Longitud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of generateTableRows()">
+      <td>{{ row._id }}</td>
+      <td>{{ row.id }}</td>
+      <td>{{ row.nombre }}</td>
+      <td>{{ row.latitud }}</td>
+      <td>{{ row.longitud }}</td>
+    </tr>
+  </tbody>
+</table>
