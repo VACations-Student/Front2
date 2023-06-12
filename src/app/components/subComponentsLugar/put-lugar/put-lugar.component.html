@@ -1,1 +1,50 @@
-<p>put-lugar works!</p>
+<div>
+    <form>
+        <br/>
+        <div class="ms-1 form-group col-md-3">
+            <input type="text" class="form-control" name="id" placeholder="identificador del lugar a modificar" [(ngModel)]="id" required>
+        </div>
+        <br/>
+        <div class="ms-1 form-group col-md-3">
+            <input type="text" class="form-control" name="id" placeholder="identificador" [(ngModel)]="lugarObj.id" required>
+        </div>
+        <br/>
+        <div class="ms-1 form-group col-md-3">
+            <input type="text" class="form-control" name="nombre" placeholder="nombre" [(ngModel)]="lugarObj.nombre" required>
+        </div>
+        <br/>
+        <div class="ms-1 form-group col-md-3">
+            <input type="text" class="form-control" name="latitud" placeholder="latitud" [(ngModel)]="lugarObj.latitud" required>
+        </div>
+        <br/>
+        <div class="ms-1 form-group col-md-3">
+            <input type="text" class="form-control" name="longitud" placeholder="longitud" [(ngModel)]="lugarObj.longitud" required>
+        </div>
+        <br/>
+        <div>
+            <button type="submit" class="ms-1 btn btn-primary border border-dark rounded-3" (click)="putLugarApi()" (click)="show=!show">put lugar</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="show">
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Item ID</th>
+      <th>Nombre</th>
+      <th>Latitud</th>
+      <th>Longitud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of generateTableRows()">
+      <td>{{ row._id }}</td>
+      <td>{{ row.id }}</td>
+      <td>{{ row.nombre }}</td>
+      <td>{{ row.latitud }}</td>
+      <td>{{ row.longitud }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

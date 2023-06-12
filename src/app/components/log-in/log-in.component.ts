@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppServiceService } from 'src/app/app-service.service';
 
@@ -7,7 +7,7 @@ import { AppServiceService } from 'src/app/app-service.service';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
-export class LogInComponent implements OnInit{
+export class LogInComponent {
 
 userObj: any = {
   username: "",
@@ -16,19 +16,19 @@ userObj: any = {
 
   constructor(private router:Router, private service : AppServiceService){}
 
-  ngOnInit(): void {
-    
-  }
-
   volverHome(){
     this.router.navigate(['']);
   }
 
   logIn(){
-    this.service.signin(this.userObj).subscribe((response) => {
-      console.log("token: ", response)
-      localStorage.setItem("token", String(response))
-    })
-    this.router.navigate(['']);
-  }
+    if (this.userObj.username == "" || this.userObj.password == ""){
+      console.log("aaa")
+    }else{
+      this.service.signin(this.userObj).subscribe((response) => {
+        console.log("token: ", response)
+        localStorage.setItem("token", String(response))
+      })
+      this.router.navigate(['']);
+    }
+    }
 }

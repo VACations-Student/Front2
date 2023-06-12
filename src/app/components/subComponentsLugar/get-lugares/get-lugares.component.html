@@ -1,5 +1,6 @@
-<p id="texto">get-lugares work</p>
+<button type="button" class="ms-1 btn btn-primary border border-dark rounded-3" (click)="getLugaresApi()" (click)="show=!show">get-lugares</button>
 
+<div *ngIf="show">
 <table>
   <thead>
     <tr>
@@ -20,3 +21,4 @@
     </tr>
   </tbody>
 </table>
+</div>

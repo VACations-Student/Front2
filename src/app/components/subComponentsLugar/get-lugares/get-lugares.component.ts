@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppServiceService } from 'src/app/app-service.service';
 
 @Component({
@@ -6,14 +6,11 @@ import { AppServiceService } from 'src/app/app-service.service';
   templateUrl: './get-lugares.component.html',
   styleUrls: ['./get-lugares.component.css']
 })
-export class GetLugaresComponent implements OnInit {
+export class GetLugaresComponent {
   lugar: any[] = [];
+  show: boolean = false;
 
   constructor(private service: AppServiceService) {}
-
-  ngOnInit(): void {
-    this.getLugaresApi();
-  }
 
   getLugaresApi() {
     this.service.getLugares().subscribe((response) => {
