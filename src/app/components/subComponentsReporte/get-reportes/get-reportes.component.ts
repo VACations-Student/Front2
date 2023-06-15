@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppServiceService } from 'src/app/app-service.service';
 
 @Component({
@@ -6,23 +6,28 @@ import { AppServiceService } from 'src/app/app-service.service';
   templateUrl: './get-reportes.component.html',
   styleUrls: ['./get-reportes.component.css']
 })
-export class GetReportesComponent implements OnInit{
+export class GetReportesComponent{
+  reporte: any[] = [];
+  show: boolean = false;
 
-  reporte : any []=[]
+  constructor(private service : AppServiceService){}
 
-  constructor(private service : AppServiceService){
-
-  }
-
-  ngOnInit(): void {
-    this.getReportesApi();
-  }
-
-  getReportesApi(){
+  getReportesApi() {
     this.service.getReportes().subscribe((response) => {
-      console.log('respuesta ', response)
+      console.log('respuesta ', response);
       this.reporte = Array.isArray(response) ? response : [response];
-    })
+      console.log(this.reporte);
+    });
+  }
+
+  generateTableRow() {
+    return this.reporte.map((item) => ({
+      _id: item._id,
+      id: item.id,
+      fecha: item.fecha,
+      estado: item.estado,
+      id_lugar: item.lugar
+    }));
   }
 
 }

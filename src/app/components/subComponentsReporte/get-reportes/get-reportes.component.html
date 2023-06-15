@@ -1,6 +1,24 @@
-<p>get-reportes work</p>
-<ul>
-  <li *ngFor="let item of reporte">
-    {{ item | json }}
-  </li>
-</ul>
+<button type="button" class="ms-1 btn btn-primary border border-dark rounded-3" (click)="getReportesApi()" (click)="show=!show">get-reportes</button>
+
+<div *ngIf="show">
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Item ID</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>Id_lugar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of generateTableRow()">
+      <td>{{ row._id }}</td>
+      <td>{{ row.id }}</td>
+      <td>{{ row.fecha }}</td>
+      <td>{{ row.estado }}</td>
+      <td>{{ row.id_lugar }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

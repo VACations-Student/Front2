@@ -1,1 +1,15 @@
-<p>cant-incendios-fecha works!</p>
+<div>
+    <form>
+        <br/>
+        <div class="ms-1 form-group col-md-3">
+            <input type="date" class="form-control" name="fecha" placeholder="fecha" [(ngModel)]="fecha" required>
+        </div>
+        <br/>
+        <div>
+            <button type="submit" class="ms-1 btn btn-primary border border-dark rounded-3" (click)="getReporteFechaApi()" (click)="show=!show">get reporte por fecha</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="show">
+<h3>{{cantidad}}</h3>
+</div>

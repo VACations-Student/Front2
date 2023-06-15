@@ -20,11 +20,26 @@ export class PatchLugarComponent {
   constructor(private service: AppServiceService) {}
 
   patchLugarApi(){
-    this.service.patchLugar(this.lugarObj, this.id).subscribe((response) =>{
-      console.log('respuesta ', response);
-      this.getLugaresApi()
-    });
-}
+    if(this.id != ""){
+        if(this.lugarObj.id == ""){
+          delete this.lugarObj["id"]
+        }
+        if(this.lugarObj.nombre == ""){
+          delete this.lugarObj["nombre"]
+        }
+        if(this.lugarObj.latitud == ""){
+          delete this.lugarObj["latitud"]
+        }
+        if(this.lugarObj.longitud == ""){
+          delete this.lugarObj["longitud"]
+        }
+        console.log(this.lugarObj)
+        this.service.patchLugar(this.lugarObj, this.id).subscribe((response) =>{
+          console.log('respuesta ', response);
+          this.getLugaresApi()
+        });
+    }
+  }
 
   getLugaresApi() {
     this.service.getLugares().subscribe((response) => {
@@ -33,6 +48,7 @@ export class PatchLugarComponent {
       console.log(this.lugar);
     });
   }
+
   generateTableRows() {
     return this.lugar.map((item) => ({
       _id: item._id,

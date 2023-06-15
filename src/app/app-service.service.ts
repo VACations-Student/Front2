@@ -37,15 +37,47 @@ export class AppServiceService {
   }
 
   patchLugar(bodydata : JSON, id : string){
-    return this.http.put('/api/lugar/' + id, bodydata, {headers : this.headersUpdate()})
+    return this.http.patch('/api/lugar/' + id, bodydata, {headers : this.headersUpdate()})
   }
 
   deleteLugar(id: string){
     return this.http.delete('/api/lugar/' + id, {headers : this.headersUpdate()})
   }
 
+  lugarCoordenadas(latitud: string, longitud: string){
+    return this.http.get('/api/lugar/incendios/' + latitud + '/' + longitud + '/buscarPorCoordenadas', {headers : this.headersUpdate()})
+  }
+
   getReportes(){
     return this.http.get('/api/reporte', {headers : this.headersUpdate()})
+  }
+
+  getReporte(id : string){
+    return this.http.get('/api/reporte/' + id, {headers : this.headersUpdate()})
+  }
+
+  postReporte(bodydata : JSON){
+    return this.http.post('/api/reporte', bodydata, {headers : this.headersUpdate()})
+  }
+
+  putReporte(bodydata : JSON, id : string){
+    return this.http.put('/api/reporte/' + id, bodydata, {headers : this.headersUpdate()})
+  }
+
+  patchReporte(bodydata : JSON, id : string){
+    return this.http.patch('/api/reporte/' + id, bodydata, {headers : this.headersUpdate()})
+  }
+
+  deleteReporte(id: string){
+    return this.http.delete('/api/reporte/' + id, {headers : this.headersUpdate()})
+  }
+
+  incendiosLugar(id: string){
+    return this.http.get('/api/reporteDeIncendio/' + id + '/buscarIncendio', {headers : this.headersUpdate()})
+  }
+
+  incendiosFecha(fecha: Date){
+    return this.http.get('/api/incendios/' + fecha + '/cantIncendiosEnUnaFecha', {headers : this.headersUpdate()})
   }
 
   signin(bodydata : JSON){

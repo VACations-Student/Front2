@@ -1,1 +1,34 @@
-<p>incendio-por-lugar works!</p>
+<div>
+    <form>
+        <br/>
+        <div class="ms-1 form-group col-md-3">
+            <input type="number" class="form-control" name="id" placeholder="identificador" [(ngModel)]="id" required>
+        </div>
+        <br/>
+        <div>
+            <button type="submit" class="ms-1 btn btn-primary border border-dark rounded-3" (click)="getReporteLugarApi()" (click)="show=!show">get reporte por lugar</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="show">
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Item ID</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>Id_lugar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of generateTableRow()">
+      <td>{{ row._id }}</td>
+      <td>{{ row.id }}</td>
+      <td>{{ row.fecha }}</td>
+      <td>{{ row.estado }}</td>
+      <td>{{ row.id_lugar }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
